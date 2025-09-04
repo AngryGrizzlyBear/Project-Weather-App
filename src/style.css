@@ -1,0 +1,14 @@
+body {
+    font-family: sans-serif;
+    background: #0b1220;
+    color: #e8eef7;
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 16px;
+}
