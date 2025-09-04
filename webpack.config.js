@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+require('dotenv').config();
 
 
 module.exports = {
@@ -11,9 +13,14 @@ module.exports = {
         clean: true,
     },
     plugins: [
-       new HtmlWebpackPlugin({
-        template: './src/index.html'
-       }),
+        new HtmlWebpackPlugin({
+            template: './src/index.html'
+        }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                VISUALCROSSING_API_KEY: JSON.stringify(process.env.VISUALCROSSING_API_KEY),
+            },
+        }),
     ],
     devServer: {
         static: {
