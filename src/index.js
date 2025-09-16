@@ -1,8 +1,14 @@
 import './style.css'
-import { fetchWeather } from './modules/api'
+import { setupForm } from './modules/dom'
+
 console.log("✅ Weather App booting…")
 
-fetchWeather("New York")
-.then(data => {
-    if (data) console.log('Weather fetched successfully!')
-});
+setupForm()
+
+// fetchWeather("New York")
+//     .then(data => {
+//         if (data) {
+//             console.log('Weather fetched successfully!')
+//             console.log(data);
+//         }
+//     });
