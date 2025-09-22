@@ -55,5 +55,10 @@ button:hover {
 }
 
 #weather-output p {
+    font-size: 1rem;
     margin: 8px 0;
+}
+
+#weather-output p:first-child {
+  font-weight: bold;
 }

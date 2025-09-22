@@ -9,8 +9,19 @@ function renderWeather(data) {
     <p><strong>High:</strong>${data.tempMax} °C <strong>Low:</strong>${data.tempMin} °C</p>
     <p><strong>Conditions:</strong>${data.conditions}</p>
     <p><strong>Description:</strong>${data.description}</p>
-    `
+    `;
 }
+
+function renderLoading(){
+    const output = document.getElementById("weather-output");
+    output.innerHTML =  `<p>⏳ Fetching weather data...</p>`;
+}
+
+function renderError(message){
+    const output = document.getElementById("weather-output");
+    output.innerHTML = `<p style="color: red;">⚠️ ${message}</p>`;
+}
+
 
 export function setupForm() {
     const form = document.getElementById("location-form");
@@ -22,11 +33,16 @@ export function setupForm() {
         if (!location) return;
 
         console.log(`Fetching weather for: ${location}`);
+        
+        renderLoading();
+
         const data = await fetchWeather(location);
 
         if (data) {
             console.log("Processed Data from form submit:", data);
             renderWeather(data);
+        } else {
+            renderError("Could not fetch weather data. Please try again.");
         }
     });
 }
